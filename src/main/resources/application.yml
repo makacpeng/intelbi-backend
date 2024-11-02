@@ -3,7 +3,7 @@
 # @from <a href="https://yupi.icu">编程导航知识星球</a>
 spring:
   application:
-    name: springboot-init
+    name: intelbi-backend
   # 默认 dev 环境
   profiles:
     active: dev
@@ -21,7 +21,7 @@ spring:
   # todo 需替换配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/my_db
+    url: jdbc:mysql://localhost:3306/intelbi
     username: root
     password: 12345678
    # Redis 配置
@@ -101,3 +101,14 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.yupi.springbootinit.controller
+# AI 配置
+xun-fei:
+  client:
+    appId: 90d334d7
+    apiSecret: NjRjNDJmMjhiZjZkZTFiOTk0YjE3ODk3
+    apiKey: 57cce1c5712461ceeb0bf7917809cfa2
+
+yuapi:
+  client:
+    access-key: tr5rps18lbt7r00bjjadqihlk0379ps7
+    secret-key: fz2o9ccahcfj5j2q60mhms4v2go1p61j
