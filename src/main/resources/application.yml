@@ -1,6 +1,5 @@
 # 公共配置文件
 
-# @from <a href="https://yupi.icu">编程导航知识星球</a>
 spring:
   application:
     name: intelbi-backend
