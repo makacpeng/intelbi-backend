@@ -281,8 +281,8 @@ public class ChartController {
         userInput.append("原始数据：").append("\n");
         String result = ExcelUtils.excelToCsv(multipartFile);
         userInput.append(result).append("\n");
-        String csvData = aiManager.doChat(modelId, userInput.toString());
-        String[] splits = csvData.split("【【【【【");
+        String csvData = aiManager.sendMsgToXingHuo(true, userInput.toString());
+        String[] splits = csvData.split("'【【【【【'");
         System.out.println(Arrays.toString(splits));
         if (splits.length < 3) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "AI 生成错误");
@@ -363,7 +363,6 @@ public class ChartController {
         userInput.append("原始数据：").append("\n");
         String csvData = ExcelUtils.excelToCsv(multipartFile);
         userInput.append(csvData).append("\n");
-
 
         // 插入数据到数据库
         Chart chart = new Chart();

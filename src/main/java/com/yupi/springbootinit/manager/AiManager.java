@@ -25,8 +25,6 @@ public class AiManager {
     @Resource
     private SparkClient sparkClient;
 
-    @Resource
-    private YuCongMingClient yuCongMingClient;
 
     /**
      * 向 AI 发送请求
@@ -75,7 +73,7 @@ public class AiManager {
                 .maxTokens(2048)
                 // 核采样阈值。用于决定结果随机性,取值越高随机性越强即相同的问题得到的不同答案的可能性越高 非必传,取值为[0,1],默认为0.5
                 .temperature(0.2)
-                // 指定请求版本，默认使用最新2.0版本
+                // 指定请求版本，默认使用最新2.0版本 Spark Max
                 .apiVersion(SparkApiVersion.V3_5)
                 .build();
         // 同步调用
@@ -85,22 +83,22 @@ public class AiManager {
         return responseContent;
     }
 
-    /**
-     *  AI对话
-     * @param message
-     * @return
-     */
-    public String doChat(long modelId, String message) {
-        DevChatRequest devChatRequest = new DevChatRequest();
-        devChatRequest.setModelId(modelId);
-        devChatRequest.setMessage(message);
-
-        BaseResponse<DevChatResponse> response = yuCongMingClient.doChat(devChatRequest);
-
-        if (response == null) {
-            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "AI 响应错误");
-        }
-        return response.getData().getContent();
-    }
+//    /**
+//     *  AI对话
+//     * @param message
+//     * @return
+//     */
+//    public String doChat(long modelId, String message) {
+//        DevChatRequest devChatRequest = new DevChatRequest();
+//        devChatRequest.setModelId(modelId);
+//        devChatRequest.setMessage(message);
+//
+//        BaseResponse<DevChatResponse> response = yuCongMingClient.doChat(devChatRequest);
+//
+//        if (response == null) {
+//            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "AI 响应错误");
+//        }
+//        return response.getData().getContent();
+//    }
 
 }
